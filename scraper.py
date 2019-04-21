@@ -78,7 +78,7 @@ load_dotenv(dotenv_path=DOTENV_PATH)
     Find the index for my name
     Add it to the output list
 """
-with req.urlopen('https://ratings.icu.ie/icu_ratings?icu_id=18250') as response:
+with req.urlopen('https://ratings.icu.ie/icu_ratings?icu_id={}'.format(os.getenv('ICU_ID'))) as response:
     html = response.read()
     parser = myhtmlparser()
     parser.feed(str(html))
@@ -96,7 +96,7 @@ output = [['Irish Chess Union', data[ind + 2], data[ind + 4]]]
     find the index for blitz rating
 """
 
-with req.urlopen('https://ratings.fide.com/card.phtml?event=2512513') as response:
+with req.urlopen('https://ratings.fide.com/card.phtml?event={}'.format(os.getenv('FIDE_ID'))) as response:
     html = response.read()
     parser = myhtmlparser()
     parser.feed(str(html))
