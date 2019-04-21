@@ -113,3 +113,4 @@ output.append(['FIDE blitz', '', data[ind + 1].replace('\\n', '')])
 
 pd.DataFrame(output).to_csv("ratings.csv", index=False, header=False)
 upload_file(os.path.join(CWD, 'ratings.csv'), os.getenv('BUCKET_NAME'), 'ratings.csv')
+os.remove('ratings.csv')
